@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List Products</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+      <link rel="stylesheet" type="text/css" th:href="@{/static/css/add.css}" />
+      <link rel="stylesheet" type="text/css" th:href="@{/static/css/list.css}" />
+  </head>
+  <body>
+    <div class="marg">
+      <header>
+        <div class="navig">
+          <ul>
+            <li><a href="/product">List of products</a></li>
+            <li><a href="/addProduct">Add item to list</a></li>
+          </ul>
+          <form class="search" th:action="@{/product}" th:object="${product}" method="get">
+            <p>
+              <input type="search" class="searchArea" name="keyword" placeholder="Site search" />
+              <input type="submit" class="searchBtn" value="search" />
+            </p>
+          </form>
+        </div>
+      </header>
+        <div class="container text-center">
+      <div><h1>List of products</h1></div>
+            <div>
+                <table class="table table-bordered">
+                    <thread class="thead-dark">
+                        <th>Id</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Count</th>
+                        <th>Type</th>
+                        <th>ShelfLife</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </thread>
+                    <tbody>
+                    <th:block th:each="product : ${productList}">
+                        <tr>
+                            <td>[[${product.id}]]</td>
+                            <td><img th:src="@{${'/images/' + product.image}}" style="width: 50px;height: 50px;" /></td>
+                            <td>[[${product.name}]]</td>
+                            <td>[[${product.price}]]</td>
+                            <td>[[${product.count}]]</td>
+                            <td>[[${product.type}]]</td>
+                            <td>[[${product.shelfLife}]]</td>
+                            <td>[[${product.status.name}]]</td>
+                            <td>
+                                <a th:href="@{'/product/edit/' + ${product.id}}">Edit</a>
+                                &nbsp;&nbsp;&nbsp;
+
+                            </td>
+                            <td>
+                                <a th:href="@{/product/delete/{id}(id=${product.id})}">Delete</a>
+                                &nbsp;&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+  </body>
+</html>

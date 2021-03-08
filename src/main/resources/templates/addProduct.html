@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Product</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+      <link rel="stylesheet" type="text/css" th:href="@{/static/css/add.css}" />
+      <link rel="stylesheet" type="text/css" th:href="@{/static/css/list.css}" />
+  </head>
+  <body>
+
+        <div class="border-left"><a th:href="@{/product}">Back to Contact List</a></div>
+      <div class="container text-center">
+          <div><h1>Add a Product</h1></div>
+            <form  th:action="@{/product/save}" th:object="${product}" method="post"
+               enctype="multipart/form-data" style="max-width: 600px; margin:0 auto">
+                <input type="hidden" th:value="${product.id}"/>
+            <div>
+                <div class="form-group row">
+                <label class="col-form-label col-sm-4">Name: </label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{name}" class="form-control" required />
+                </div>
+                </div>
+                <div class="form-group row">
+                <label class="col-form-label col-sm-4">Price: </label>
+                <div class="col-sm-8">
+                    <input type="number" step="0.1" th:field="*{price}" class="form-control" required />
+                </div>
+                </div>
+                <div class="form-group row">
+                <label class="col-form-label col-sm-4">Count: </label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{count}" class="form-control" required />
+                </div>
+                </div>
+                <div class="form-group row">
+                <label class="col-form-label col-sm-4">Type: </label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{type}" class="form-control" required />
+                </div>
+                </div>
+                <div class="form-group row">
+                <label class="col-form-label col-sm-4">ShelfLife: </label>
+                <div class="col-sm-8">
+                    <input type="number" step="0.1" th:field="*{shelfLife}" class="form-control" required />
+                </div>
+                </div>
+                <div class="form-group row">
+                <label class="col-form-label col-sm-4">Status: </label>
+                <div class="col-sm-8">
+                    <select th:field="*{status}" class="form-control" required>
+                        <th:block th:each="status : ${statuses}">
+                            <option th:text="${status.name}" th:value="${status.id}" />
+                        </th:block>
+                    </select>
+                </div>
+                </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4" for="customFile">Image: </label>
+                        <div class="col-sm-8">
+                            <input type="file" name="file" id="customFile">
+                        </div>
+                    </div>
+
+            <div class="text-center p-3"><button class="btn btn-primary"type="submit">Submit form</button></div>
+                </div>
+            </form>
+
+      </div>
+    <script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+    <!--<script th:src="@{js/bootstrap.js}"></script>-->
+  </body>
+</html>
