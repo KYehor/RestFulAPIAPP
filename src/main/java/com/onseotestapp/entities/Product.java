@@ -1,6 +1,8 @@
-package com.onseotestapp.domain;
+package com.onseotestapp.entities;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /**
@@ -10,12 +12,13 @@ import javax.persistence.*;
  * @author Yehor Kachur
  * @version 1.0
  */
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "product")
 public class Product {
 
-    /** Field id is unique with auto increment in Database. */
+    /** Field id is unique with auto increment in Database. This is product id. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,7 +44,7 @@ public class Product {
     private Status status;
 
     /**
-     * Constructor - creating a new object
+     * Constructor - creating a new object of Product class
      * @see Product
      */
     public Product(){}

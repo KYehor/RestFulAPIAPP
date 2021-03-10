@@ -1,7 +1,6 @@
-package com.onseotestapp.dao;
+package com.onseotestapp.repositories;
 
-import com.onseotestapp.domain.Product;
-import com.onseotestapp.domain.Status;
+import com.onseotestapp.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

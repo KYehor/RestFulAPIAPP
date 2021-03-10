@@ -1,4 +1,4 @@
-package com.onseotestapp.controller;
+package com.onseotestapp.controllers;
 
 import com.onseotestapp.exceptions.NoDataFoundException;
 import com.onseotestapp.exceptions.ProductNotFoundException;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
@@ -62,4 +61,5 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
+
 }
